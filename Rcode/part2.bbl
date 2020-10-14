@@ -1,0 +1,37 @@
+\begin{thebibliography}{}
+
+\bibitem[Auguie, 2017]{gride}
+Auguie, B. (2017).
+\newblock {\em GridExtra: Miscellaneous Functions for "Grid" Graphics}.
+
+\bibitem[Hervé, 2019]{rvaidememoire}
+Hervé, M. (2019).
+\newblock {\em RVAideMemoire: Testing and Plotting Procedures for
+  Biostatistics}.
+
+\bibitem[Mangiafico, 2019]{rcompanion}
+Mangiafico, S. (2019).
+\newblock {\em rcompanion: Functions to Support Extension Education Program
+  Evaluation}.
+
+\bibitem[María T.~Pulido and Pacheco, 2008]{homegarden}
+María T.~Pulido, Erika M. Pagaza-Calderón, A. M.-B. B. M.-A. A.~S. and
+  Pacheco, R.~M. (2008).
+\newblock Home gardens as an alternative for sustainability: Challenges and
+  perspectives in latin america.
+\newblock {\em Current Topics in Ethnobotany}.
+
+\bibitem[{R Core Team}, 2017]{rstandard}
+{R Core Team} (2017).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[Wickham, 2016]{ggplot2q}
+Wickham, H. (2016).
+\newblock {\em ggplot2: Elegant graphics for data analysis}.
+
+\bibitem[Wilke, 2019]{clauscowplot}
+Wilke, C.~O. (2019).
+\newblock {\em Cowplot}.
+
+\end{thebibliography}

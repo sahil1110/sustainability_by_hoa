@@ -1,0 +1,398 @@
+\documentclass{article}
+\usepackage{amsmath} %This allows me to use the align functionality.
+                     %If you find yourself trying to replicate
+                     %something you found online, ensure you're
+                     %loading the necessary packages!
+\usepackage{amsfonts}
+\usepackage{lineno}
+\linenumbers
+\usepackage[margin=1.0in]{geometry}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{multicol}
+\newcommand{\nCr}[2]{\,_{#1}C_{#2}} % nCr
+\newcommand{\nPr}[2]{\,_{#1}P_{#2}} % nPr
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\usepackage{Sweave}
+\begin{document}
+\input{part1-concordance}
+%set the size of the graphs to fit nicely on a 8.5x11 sheet
+\noindent \textbf{MA 354: Data Analysis I -- Fall 2019}\\%\\ gives you a new line
+\noindent \textbf{Exam 2:}\vspace{1em}\\
+\textbf{Instructions:}
+\begin{itemize}
+	\item You have 45 minutes to complete the conceptual part of this exam.
+	\item The data analysis is take home and due 12/06 by 11:59p.
+	\item Take a deep breath. You're going to do well and the worst case is that it will be productive.
+\end{itemize}
+\textbf{\texttt{R}/\LaTeX ~Sweave notes -- this should be all that you need.}
+	\begin{itemize}
+		\item To run \texttt{R} and print the output.
+	\begin{Verbatim}
+	<<>>=
+		#Rcode goes here
+		#Output is automatically printed in the .pdf
+	@
+	\end{Verbatim}
+		\textbf{Remark:} All \texttt{R} chunks must have no spaces preceding the $<<>>=$ or @ syntax. 
+	
+		\item Provide \texttt{R} code for plot and place the plot into our document.
+	\begin{Verbatim}
+	<<plotName,eval=FALSE>>=
+		#Rcode for plot
+		#We will call this later so make sure it has a unique name
+	@
+	\begin{figure}[H]
+		\centering
+		<<fig=TRUE,echo=FALSE>>=
+		library("graphics")
+		<<plotName>>
+		@
+		\caption{Some information about our plot} \label{Fig:plot1}
+	\end{figure}
+	\end{Verbatim}
+	You can then reference a graph in latex using \verb|\ref{Fig:plot1}|.\\
+	\textbf{Remark:} All \texttt{R} chunks must have no spaces preceding the $<<>>=$ or @ syntax. 
+	\item If you wanted a one line equation that is centered like this,
+	\[\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon\]
+	you can use this \LaTeX.
+	\begin{Verbatim}
+	\[\widehat{y_i} = \beta_0 + \beta_1 x_{1i}+ \beta_2 x_{2i} + \epsilon\]
+	\end{Verbatim}
+	\item If you wanted a multiple line equation that is centered like this,
+	\begin{align*}
+		f_X(x) &= 90 x^8(1-x)\\
+		       &= 90x^8 - 90x^9\\
+	\end{align*}
+	you can use this \LaTeX.
+	\begin{Verbatim}
+	\begin{align*}
+		f_X(x) &= 90 x^8(1-x)\\
+			   &= 90x^8 - 90x^9\\
+	\end{align*}
+	\end{Verbatim}
+
+	\end{itemize}
+	
+\textbf{Help:}
+You can ask for information about any of the following functions that we've used by
+asking \texttt{R}. For example, if I wanted help with the lm() function I would 
+run ?lm() in the \texttt{R} console. Note that if you're asking a question about 
+a function, its library must be loaded.\\
+\begin{multicols}{3} \small
+\begin{itemize}
+  \item Stock R functions
+  \begin{itemize}
+    \item which()
+    \item subset()
+    \item summary()
+    \item names()
+    \item cumsum()
+    \item apply()
+    \item lapply()
+    \item sapply()
+    \item tapply()
+    \item table()
+    \item prop.table()
+    \item pie()
+    \item barplot()
+    \item hist()
+    \item density()
+    \item boxplot()
+    \item lines()
+    \item points()
+    \item jitter()
+    \item legend()
+    \item optim()
+    \item prop.test()
+    \item t.test()
+    \item var.test()
+    \item aov()
+    \item lm()
+    \item anova()
+    \item tukeyHSD()
+    \item p.adjust()
+    \item fisher.test()
+    \item chisq.test()
+    \item cor()
+    \item cor.test()
+  \end{itemize}
+    \item stringr Package
+  \begin{itemize}
+    \item str\_split()
+  \end{itemize}
+    \item extraDistr Package
+  \begin{itemize}
+    \item dmnom()
+  \end{itemize}
+    \item nleqslv Package
+  \begin{itemize}
+    \item nleqslv()
+  \end{itemize}
+  \vfill\null \columnbreak
+  \item ggplot2 Package Plotting
+  \begin{itemize}
+    \item ggplot()
+    \item geom\_bar()
+    \item coord\_polar()
+    \item geom\_hline()
+    \item geom\_text()
+    \item geom\_histogram()
+    \item geom\_density()
+    \item geom\_freqpoly()
+    \item geom\_boxplot()
+    \item geom\_jitter()
+    \item geom\_violin()
+    \item geom\_point()
+    \item geom\_line()
+    \item facet\_grid()
+    \item coord\_flip()
+    \item theme\_bw()
+    \item xlab()
+    \item ylab()
+    \item ggtitle()
+  \end{itemize}
+  \item Probability Distribution
+  \begin{itemize}
+    \item dbinom()
+    \item dhyper()
+    \item dnbinom()
+    \item dpois()
+    \item dunif()
+    \item dnorm()
+    \item dlnorm()
+    \item dchisq()
+    \item dt()
+    \item df()
+  \end{itemize}
+  \item gridExtra Package
+  \begin{itemize}
+  \item grid.arrange()
+  \end{itemize}
+  \item qqplotr Package
+  \begin{itemize}
+    \item stat\_qq\_band()
+    \item stat\_qq\_line()
+    \item stat\_qq\_point()
+  \end{itemize}
+  \vfill\null \columnbreak
+  \item boot Package
+  \begin{itemize}
+  \item boot()
+  \item boot.ci()
+  \end{itemize}
+  \item BSDA Package
+  \begin{itemize}
+  \item SIGN.test()
+  \end{itemize}
+  \item simpleboot Package
+  \begin{itemize}
+  \item two.boot()
+  \end{itemize}
+  \item RVAideMemoire Package
+  \begin{itemize}
+  \item mood.medtest()
+  \item cramer.test()
+  \end{itemize}
+  \item rcompanion Package
+  \begin{itemize}
+  \item pairwiseMedianTest()
+  \item cldList()
+  \item phi()
+  \item cramerV()
+  \end{itemize}
+  \item multcomp Package
+  \begin{itemize}
+  \item glht()
+  \item cld()
+  \end{itemize}
+  \item FSA Package
+  \begin{itemize}
+  \item dunnTest()
+  \end{itemize}
+  \item DescTools Package
+  \begin{itemize}
+  \item StuartTauC()
+  \end{itemize}
+  \end{itemize}
+  \vfill\null
+  \end{multicols}
+  \newpage
+  \begin{multicols}{2}
+  \begin{itemize}
+  \item Bernoulli Distribution
+  \begin{align*}
+  	f_X(x|p) &= p^x(1-p)^{1-x} I(x \in \{0,1\}) \tag*{ \textbf{[PMF]}}\\
+  	E(X) &=p\tag*{\textbf{[Expected Value]}}\\
+  	var(X)=&p(1-p)\tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Binomial Distribution
+  \begin{align*}
+  	f_X(x|n,p) &={n \choose x} p^x (1-p)^{n-x} I(x \in \{0,1,\ldots n\})\tag*{\textbf{[PMF]}}\\
+  	E(X) &= np \tag*{\textbf{[Expected Value]}}\\
+	  var(X) & np(1-p)\tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Hypergeometric Distribution
+  \begin{align*}
+  	f_X(x|N,n,m,k) &=\frac{{m \choose x}{n \choose (k-x)}}{{N \choose k}}  I(x \in \mathcal{X})\tag*{\textbf{[PMF]}}\\
+  	E(X) &= \frac{km}{m+n}\tag*{\textbf{[Expected Value]}}\\
+	  var(X) &= \frac{km}{m+n} ~ \frac{-n}{m+n} ~ \frac{m+n-k}{m+n-1} \tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Negative Binomial Distribution
+  \begin{align*}
+  	f_X(x|n,p) &={{n+x-1} \choose {x}} p^n (1-p)^{x} I(x \in \{0,1,\ldots\})\tag*{\textbf{[PMF]}}\\
+  	E(X) &= \frac{n(1-p)}{p}   \tag*{\textbf{[Expected Value]}}\\
+	  var(X) &= \frac{n(1-p)}{p^2} \tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Poisson Distribution
+  \begin{align*}
+  	f_X(x|\lambda ) &= \frac{\lambda^x e^{-\lambda}}{x!}~ I(x \in \{0,1,\ldots\}) \tag*{\textbf{[PMF]}}\\
+    E(X) &= \lambda\\
+    var(X) &= \lambda\\
+  \end{align*}
+  \item Uniform Distribution
+  \begin{align*}
+    f_X(x|a,b) &= \frac{1}{b-a}~ I(x \in [a,b]) \tag*{\textbf{[PDF]}}\\
+    E(X) &= \frac{a+b}{2} \tag*{\textbf{[Expected Value]}}\\
+    var(X) &= \frac{(b-a)^2}{12} \tag*{\textbf{[Variance]}}
+  \end{align*}
+  \item Gaussian Distribution
+  \begin{align*}
+    f_X(x|\mu,\sigma) &= \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}~ I(x \in \mathbb{R}) \tag*{\textbf{[PDF]}}\\
+    E(X) &= \mu\tag*{\textbf{[Expected Value]}}\\ 
+    var(X) &= \sigma^2\tag*{\textbf{[Variance]}}\\ 
+  \end{align*}
+  \item Log-Normal Distribution
+  \begin{align*}
+    f_X(x|\mu, \sigma) &= \frac{1}{x \sigma \sqrt{2 \pi}} e^{\frac{(ln(x)-\mu)^2}{2 \sigma^2}}~ I(x \in (0,\infty)) \tag*{\textbf{[PDF]}}\\
+	  E(X) &= e^{\mu + \sigma^2/2} \tag*{\textbf{[Expected Value]}}\\
+  	var(X) &= e^{2\mu + \sigma^2}e^{\sigma^2-1} \tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Chi-squared Distribution
+  \begin{align*}
+    f_X(x) &= \frac{1}{\Gamma\left(\frac{v}{2}\right)2^{v/2}} x^{\frac{v}{2}-1} e^{\frac{-x}{2}} \tag*{\textbf{[PDF]}}\\
+    E(X) &= v \tag*{\textbf{[Expected Value]}}\\
+    var(X) &= 2v \tag*{\textbf{[Variance]}}\\
+  \end{align*}
+  \item Student T distribution
+  \begin{align*}
+      f_T(t) &= \frac{\Gamma(\frac{v+1}{2})}{\sqrt{\pi~\Gamma(v/2)}} \left(1+\frac{t^2}{2}\right)^{-(v+1)/2}\tag*{\textbf{[PDF]}}\\
+      E(X) &= 0 \tag*{\textbf{[Expected Value for $v>1$]}}\\
+      var(X) &= \frac{v}{v-2} \tag*{\textbf{[Variance for $v>2$]}}\\
+  \end{align*}
+  \item F distribution
+  \begin{align*}
+    f_W(w)&=\frac{\Gamma(\frac{u+v}{2})}{\Gamma(\frac{u}{2})\Gamma(\frac{v}{2})}
+\left(\frac{u}{v}\right)^{u/2}\frac{w^{\frac{u}{2}-1}}{[1+(\frac{u}{v})w]^{(u+v)/2}}~I(w>0) \tag*{\textbf{[PDF]}}\\
+    E(W)&=\frac{v}{v-2} \tag{\textbf{[Expected Value for $v>2$]}}\\
+    var(W)&=\left(\frac{u-2}{u}\right) \left(\frac{v}{v+2}\right) \tag{\textbf{[Variance]}}\\
+  \end{align*}
+  \end{itemize}
+  \end{multicols}
+\newpage
+
+\section{In-exam Portion:}
+\noindent \textbf{Part I (30 points)}\\
+In Part I, I'm simply evaluating your engagement with the material. If you've worked
+through the material, there should be clear distinctions to make. I have provided
+as much room as I think is necessary to answer these questions. Take a minute to think
+or do some scratch work -- your answer should fit in the space provided, only keep 
+the important distinctions. I do not expect you to recite the formulas but to explain 
+the procedures, their hypotheses, conclusions and/or their differences.\\
+
+\noindent \textbf{Submit your exam by emailing the following to wcipolli@colgate.edu}
+\begin{enumerate}
+  \item A LASTNAME\_FIRSTNAME.pdf file just containing your answers (pages 5-6)
+\end{enumerate}
+
+\section{Out-of-exam Portion:}
+\noindent \textbf{Part II (70 points)}\\
+In Part II, you're completing a data analysis. In this analysis you should provide 
+numerical and graphical summaries that provide information for the researcher
+related to their research question. \\
+
+\noindent \textbf{Submit your exam by emailing the following to wcipolli@colgate.edu}
+\begin{enumerate}
+  \item A LASTNAME\_FIRSTNAME.pdf of your final draft data analysis
+  \item Your .Rnw file.
+\end{enumerate}
+
+\noindent \textbf{Part III (Optional with likely increased score)}\\
+Shortly after the exam, you will receive an email to anonymously review two exams.
+You should review their data analysis for completeness, correctness, and 
+communication. You will type up \textbf{constructive} notes to make the response better. 
+The idea is to provide guidance for what's needed for the full data analysis to be effectively 
+communicated to where you can understand the logic and the conclusions made about the data analysis.
+The format is discussed below.
+\begin{itemize}
+  \item Write a paragraph about the general pros and cons of the paper you're reviewing. There 
+  is something good about every paper -- find it and discuss that part. Also provide, in broad strokes a 
+  \textbf{constructive} critique of the response. 
+  \item Provide a list of major issues.
+  \item Provide a list of minor issue.
+  \item Provide a list of typographical errors you've found while reading.
+  \item Ensure to provide specific line item comments where applicable.
+\end{itemize}
+
+\noindent \textbf{Part VI (Optional with likely increased score)}\\
+After you receive comments about your work, revisit your analysis from the exam. 
+Write a final draft of your analysis and provide responses to reviewer comments.
+\begin{itemize}
+  \item Write a revision of your original solution which incorporates comments made
+  in the reviews you've received.
+  \item Provide a list of responses to specific line item comments; e.g.,
+  \begin{itemize}
+    \item On page 1, line 2, you appear to interpret the statistics incorrectly.\\
+        \textbf{Response:} This was actually done correctly because I was treating 
+        the predictor as categorical and not continuous. I've added a sentence to
+        make this distinction clear when fitting the model.
+    \item On page 2, line 4, you're missing a period at the end of the sentence.\\
+        \textbf{Response:} Thank you for pointing this out; I've added the missing
+        period to the end of the sentence.
+  \end{itemize}
+\end{itemize}
+\newpage
+\textbf{Part I -- Use only the space provided to answer the following.}\\
+\begin{enumerate}
+  \item Succinctly explain the significance of Central Limit Theorem.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} CLT has many formulations, but it basically states that regardless of the population distribution, the sampling distribution of $\bar{X}$, for any random variable X, would be approximately Gaussian distributed with $\mu_{\bar{x}}=\mu_{x}$ and $\sigma_{\bar{x}}=\frac{\sigma_{x}} {\sqrt{n}}$. It is often invoked to fulfil distributional assumptions for various hypothesis tests and confidence intervals. For example, one-sample and two-sample t tests require normal population distributions as an assumption to conduct the test, and the CLT is invoked for non-normal population data to fulfil the test's distribution requirement. It also allows approximating a discrete ditribution using a continuous distribution, as we do in Z-hypothesis test to check evidence for or against a population proportion.
+    \end{minipage}
+  \item Succinctly explain why one might choose to conduct a sign test instead
+  of a $t$ test.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} First, it may be that the sample data is extremely skewed. So, t test as a hypothesis test to check evidence for or against a pre-specified value of $\mu$ in $H_{0}$ may not be the best for making statistical inference, because checking evidence for or against a pre-specified value of median in  $H_{0}$ using sign test would be better for skewed data. Secondly, if our assumptions for t test are not met. Even though the t-test is robust to some normality departures, having grossly non-normal data may warrant us to use sign test to make inference about the population, as long as the observations are independent and the sample is representative of the population. 
+    \end{minipage}
+  \item Succinctly describe the difference between a population distribution, a sampling distribution.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} A population distribution is pre-defined for a given set of data and has $\mu_{x}=E(X)$ and $\sigma_{x}=var(X)$ and may be unknown. The sampling distribution, is the distribution of any sample statistic if we take repeated random samples from the population or use resampling with a sample that is reasonably large and is representative of the population. Note that the sampling distribution may be different from the population distribution, example CLT may be invoked to show that the distribution of $\bar{X}$ is Approximately Gaussian regardless of population distribution. The population distribution is characterized by population parameters that we don't always know, and we use sampling distributions to use observed data and construct C.I. and conduct hypothesis test to estimate these population parameters.
+    \end{minipage}
+  \item Succinctly describe what 95\% confidence
+  means with respect to a construced confidence interval.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} It means that theoretically, if we were to take repeated random samples from the population and construct 95\% confidence intervals, 95\% of those confidence intervals are believed to contain the true value of the population parameter. Note that a 95\% confidence interval allows us to have an interval of values to estimate the true value of a population parameter using the given sample data, which allows taking into account variability of observed data which is different than a point estimate which doesn't consider variability. The 95\% confidence interval, then, simply refers to the \textbf{long run} behavior of construction of confidence intervals using repeated random sampling from the population.
+    \end{minipage}
+  \item Succinctly describe what a 0.05 significance 
+  level ($\alpha=0.05$) means with respect to a
+  hypothesis test.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} In a hypothesis test, we begin by assuming a sharp null hypothesis, meaning we assume 1 value for any population parameter, and also $H_{a}$ related to the population parameter which may be one-sided or two sided. So, $\alpha$ really tells us how unusual our observed data has to be, considering $H_{0}$ is true, for us to have evidence to reject $H_{0}$ and gain evidence in support of $H_{a}$. So, we calculate a test statistic value using the observed data, after checking our assumptions for the test, and find the probability of observed data assuming $H_{0}$ is true which is p-value. If p-value<$\alpha= 0.05$, we say that the probability of observed data or more exterme with respect to $H_{a}$ is less than $\alpha= 0.05$, so we have evidence to reject $H_{0}$.
+    \end{minipage}
+  \item Succinctly describe why post-hoc testing is necessary for ANOVA, Kruskal Wallis, or 
+  Mood's median test.\\
+    \begin{minipage}[t][1.1in][t]{\textwidth}
+    \textbf{Solution:} The reason is all of them are ominbus test, or they merely check evidence for against $H_{0}$ that the value of a particular population parameter is equal across all treatment groups. This parameter is the mean ($\mu$) for ANOVA, median(M) for Mood's Median test and the mean population rank ($\mu^{R}$) for Kruskal Wallis test. If we reject $H_{0}$ in either of the omnibus tests, we simply know that at least one of the population parameters in not equal to the value assumed under $H_{0}$, but we don't know parameters for which specific treatment groups are different and in what direction (greater or less). So, we use TukeyHSD, median pairwise intervals and Dunn's test for $\mu$, M and $\mu^{R}$ respectively, to construct 100($1-\alpha$)\% C.I. for each interval and check which treatment groups have statistically different value of parameters and in what direction.
+    \end{minipage}
+\newpage
+  \textbf{Longer (but still succinct) Answer} 
+  \item The analysis of \cite{Bracht16} aimed to consider the ability of MFAP4 (a continuous variable) 
+  to differentiate between stages of the disease (ordinal) -- fibrosis stages (0-2) and cirrhosis (3-4) 
+  based on the Scheuer scoring system. What analysis should they use? Ensure to include any questions
+  that need to be answered to make the correct decision.\\
+    \textbf{Solution:} Note that this is an observational study since none of the values for the variables in the dataset are influenced by the experimental design. We simply observe the value of MFAP4 with the stages of the disease in the dataset. Based on the research question, it is clear that we have the different \textbf{ordinal} stages of the disease as 5 distinct treatment groups. Firstly, we need to be sure that observations in the samples are independent, and that the sampling procedure and experimental design is such that it doesn't introduce bias. If these assumptions are not met, we should not proceed with any analysis since our conclusions would be biased. Our first instinct, then, may be to check if $\mu_{x}$, where x represents the MFAP4 levels in a sample in any treatment group, is equal across the five distinct treatment groups. This involves the use of ANOVA and Tukey's HSD as a post-hoc test subsequently if $H_{0}$ is rejected in ANOVA. However, we need to ask if the population variances ($\sigma^2$) are equal for all four treatment groups which is a critical assumption. We also need to ask if the populations for treatment groups are normally distributed, but ANOVA is robust to normality departures. Using Levene's test, we may check evidence against the population variances being equal to each other. If we find evidence against population variances being equal to each other, we may instead rely on Mood's Median Test or Kruskal Wallis test to check if $M_{x}$ or $\mu_{x}^R$ are all equal to each other, and then median pairwise intervals and Dunn's test as post hoc testing respectively if we reject the $H_{0}$ under ominbus tests to see which treatment groups have different parameter values, and the nature of such difference.
+\end{enumerate}
+
+%attach bibliography and end document.
+\bibliography{bib}
+\end{document}
